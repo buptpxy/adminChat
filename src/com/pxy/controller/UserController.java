@@ -11,23 +11,43 @@ import com.pxy.chat.H5ServletServerSocket;
 import com.pxy.entity.User;
 import com.pxy.service.UserService;
 
+/**
+ * @author pxy
+ *
+ */
 @Controller
 public class UserController {
 	@Resource
 	UserService userService;
 	
+	/**
+	 * 用户前往注册页面时的action
+	 * @param model
+	 * @return Register.jsp
+	 */
 	@RequestMapping("/register")
 	public String register(Model model){
 		model.addAttribute("user", new User());
 		return "Register";
 	}
 	
+	/**
+	 * 用户前往登录页面时的action
+	 * @param model
+	 * @return Login.jsp
+	 */
 	@RequestMapping("/login")
 	public String login(Model model){
 		model.addAttribute("user", new User());
 		return "Login";
 	}
 	
+	/**
+	 * 用户提交注册信息时的action
+	 * @param model 
+	 * @param user
+	 * @return Login.jsp或Register.jsp
+	 */
 	@RequestMapping("/save_user")// 向前台页面传的值放入model中
 	public String saveUser(Model model,@ModelAttribute("user") User user){
 		String username = user.getUsername();
@@ -44,6 +64,13 @@ public class UserController {
 		}
 		
 	}
+	
+	/**
+	 * 用户提交登录信息时的action
+	 * @param model
+	 * @param user
+	 * @return Login.jsp或Chat.jsp
+	 */
 	
 	@RequestMapping("/check_user")
 	public String checkUser(Model model,@ModelAttribute("user") User user){

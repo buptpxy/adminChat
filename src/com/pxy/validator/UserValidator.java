@@ -7,6 +7,11 @@ import com.pxy.entity.User;
 
 
 public class UserValidator {
+	/**
+	 * 对输入用户名和密码的格式校验
+	 * @param user
+	 * @return errors
+	 */
 	public List<String> validate(User user) {
 		List<String> errors = new ArrayList<String>();
 		String username = user.getUsername();
